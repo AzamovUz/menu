@@ -72,3 +72,24 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+const sectionCenter = document.querySelector('.section-center');
+
+window.addEventListener("DOMContentLoaded", function () {
+  let displayMenu = menu.map(function(item){
+    // console.log(item);
+
+    return "<article class="menu-item">
+    <img src="menu-item.jpeg" class="photo" class="menu item"/>
+    <div class="item-info">
+      <header>
+      <h4>Buttermilk Pancake</h4>
+      <h4 class="price">$15</h4>
+    </header>
+    <p class="item-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia corrupti consequuntur repellendus enim nobis, culpa quas repudiandae vitae aut cupiditate?</p>
+    </p>
+    </div>
+  </article>";
+  })
+  console.log(displayMenu);
+})
