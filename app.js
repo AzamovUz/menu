@@ -73,23 +73,43 @@ const menu = [
   },
 ];
 
-const sectionCenter = document.querySelector('.section-center');
+const sectionCenter = document.querySelector(".section-center");
+const filterBtns = document.querySelectorAll(".filter-btn");
 
+//load items
 window.addEventListener("DOMContentLoaded", function () {
-  let displayMenu = menu.map(function(item){
+  displayMenuItems(menu);
+});
+ //filter items
+filterBtns.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+  const category = e.currentTarget.dataset.id;
+  const menuCategory = menu.filter(function(menuItem){
+    console.log(menuItem.category);
+
+    return menuItem;
+  });
+  //console.log(menuCategory);
+  });
+});
+
+
+function displayMenuItems(menuItems){
+  let displayMenu = menuItems.map(function(item){
     // console.log(item);
 
-    return "<article class="menu-item">
-    <img src="menu-item.jpeg" class="photo" class="menu item"/>
+    return `<article class="menu-item">
+    <img src=${item.img} class="photo" alt=${item.title}/>
     <div class="item-info">
       <header>
-      <h4>Buttermilk Pancake</h4>
-      <h4 class="price">$15</h4>
+      <h4>${item.title}</h4>
+      <h4 class="price">${item.price}</h4>
     </header>
-    <p class="item-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia corrupti consequuntur repellendus enim nobis, culpa quas repudiandae vitae aut cupiditate?</p>
+    <p class="item-text">${item.desc}</p>
     </p>
     </div>
-  </article>";
-  })
-  console.log(displayMenu);
-})
+  </article>`;
+  });
+  displayMenu = displayMenu.join("");
+  sectionCenter.innerHTML = displayMenu; 
+}
